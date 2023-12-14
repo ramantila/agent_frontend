@@ -38,10 +38,7 @@
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-              <form
-                action="http://127.0.0.1:8001/commissions/store"
-                method="POST"
-              >
+                <form #commissionForm="ngForm" (ngSubmit)="onSubmit(commissionForm)">
                 <input
                   type="hidden"
                   name="_token"
@@ -57,6 +54,7 @@
                         id="title"
                         type="number"
                         class="form-control"
+                        ngModel
                         name="mpesa"
                         placeholder="M-Pesa"
                         required=""
@@ -74,6 +72,7 @@
                         id="title"
                         type="number"
                         class="form-control"
+                        ngModel
                         name="airtelmoney"
                         placeholder="AirtelMoney"
                         required=""
@@ -93,6 +92,7 @@
                         id="title"
                         type="number"
                         class="form-control"
+                        ngModel
                         name="tigopesa"
                         placeholder="Tigopesa"
                         required=""
@@ -110,6 +110,7 @@
                         id="title"
                         type="number"
                         class="form-control"
+                        ngModel
                         name="halopesa"
                         placeholder="Halopesa"
                         required=""
@@ -129,6 +130,7 @@
                         id="title"
                         type="number"
                         class="form-control"
+                        ngModel
                         name="nmb"
                         placeholder="NMB"
                         required=""
@@ -146,6 +148,7 @@
                         id="title"
                         type="number"
                         class="form-control"
+                        ngModel
                         name="crdb"
                         placeholder="CRDB"
                         required=""
@@ -165,6 +168,7 @@
                         id="title"
                         type="number"
                         class="form-control"
+                        ngModel
                         name="nbc"
                         placeholder="NBC"
                         required=""
