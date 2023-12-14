@@ -32,7 +32,10 @@
       <div class="card">
         <div class="card-header row">
           <div class="col col-sm-2">
-            <a href="http://127.0.0.1:8000/commissions/create" class="btn btn-sm btn-primary btn-rounded">Create Expense
+            <a
+              routerLink="/expenses/create"
+              class="btn btn-sm btn-primary btn-rounded"
+              >Create Expense
             </a>
           </div>
           <div class="col col-sm-1">
@@ -64,16 +67,30 @@
 
                   <td>
                     <div class="dropdown d-inline-block">
-                      <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="moreDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
                         <i class="ik ik-more-vertical"></i>
                       </a>
 
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="http://127.0.0.1:8000/commissions/1/edit"><i
-                            class="ik ik-edit"></i> Edit
+                        <a
+                          class="dropdown-item"
+                          href="http://127.0.0.1:8000/commissions/1/edit"
+                          ><i class="ik ik-edit"></i> Edit
                         </a>
-                        <a class="dropdown-item" href="#accountEdit" data-toggle="modal" data-target="#delete1">
+                        <a
+                          class="dropdown-item"
+                          href="#accountEdit"
+                          data-toggle="modal"
+                          data-target="#delete1"
+                        >
                           <i class="ik ik-trash"></i> Delete
                         </a>
                       </div>
@@ -88,60 +105,42 @@
     </div>
   </div>
 
-  <div class="modal fade" id="repayment1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterLabel">Repayment</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true">&times;</span></button>
-        </div>
-        <form action="http://127.0.0.1:8000/debts/1/repayment" method="POST">
-          <input type="hidden" name="_token" value="KUKS8t46ufScrt5OGyADFre4aO4qtVc5K4OD4vsI">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <label for="title">Full Name<span class="text-red">*</span></label>
-              <input id="title" type="text" class="form-control" name="fullname" value="Ramadan Ntila"
-                placeholder="Full Name" required="">
-              <div class="help-block with-errors"></div>
-            </div>
-
-            <div class="form-group">
-              <label for="title">Amount<span class="text-red">*</span></label>
-              <input id="title" type="number" class="form-control" name="amount" value="" placeholder="Amount"
-                required="">
-              <div class="help-block with-errors"></div>
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Repayment</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="delete1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="delete1"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterLabel">Delete</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <form action="http://127.0.0.1:8000/commissions/1/delete" method="POST">
-          <input type="hidden" name="_token" value="PBNAxhtXQzHknOif8GfsIm9DuTbw4y0SDcT0MZm4" />
+          <input
+            type="hidden"
+            name="_token"
+            value="PBNAxhtXQzHknOif8GfsIm9DuTbw4y0SDcT0MZm4"
+          />
           <div class="modal-body">
             <span>Are you sure, You want to Delete this ?</span>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
               No
             </button>
             <button type="submit" class="btn btn-danger">Yes</button>

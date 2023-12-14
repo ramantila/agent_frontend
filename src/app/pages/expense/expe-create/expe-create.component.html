@@ -1,0 +1,131 @@
+<div class="container-fluid">
+  <div class="page-header">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <i class="ik ik-shopping-cart bg-blue"></i>
+          <div class="d-inline">
+            <h5>Expense</h5>
+            <span>Create Expense</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <nav class="breadcrumb-container" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#"><i class="ik ik-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#">Expense</a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- start message area-->
+    <div class="col-md-12"></div>
+    <!-- end message area-->
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3>Create Expense</h3>
+          <div class="card-header-right"></div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <form #expeseForm="ngForm" (ngSubmit)="onSubmit(expeseForm)">
+                <input
+                  type="hidden"
+                  name="_token"
+                  value="g2NtMHmRGJ4QSL93VnZES7Oiyl6ML71UpOPrRR9p"
+                />
+                <div class="row">
+                  <div class="col-md-6 mr-">
+                    <div class="form-group">
+                      <label for="title"
+                        >Expense Type<span class="text-red">*</span></label
+                      >
+                      <input
+                        id="title"
+                        ngModel
+                        type="text"
+                        class="form-control"
+                        name="type"
+                        placeholder="Expense Type"
+                        required=""
+                      />
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="title"
+                        >Amount<span class="text-red">*</span></label
+                      >
+                      <input
+                        id="title"
+                        ngModel
+                        type="number"
+                        class="form-control"
+                        name="amount"
+                        placeholder="Amount"
+                        required=""
+                      />
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mr-">
+                    <div class="form-group">
+                      <label>Date<span class="text-red">*</span></label>
+                      <input
+                        ngModel
+                        class="form-control"
+                        type="date"
+                        name="datefrom"
+                        required=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="title">Description</label>
+                      <textarea
+                      ngModel
+                        class="form-control h-123"
+                        name="description"
+                        placeholder="Description"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mr-"></div>
+
+                  <div class="col-md-6">
+                    <div class="form-group text-right">
+                      <button type="submit" class="btn btn-primary">
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

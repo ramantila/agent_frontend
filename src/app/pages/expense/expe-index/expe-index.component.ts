@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ApiHttpClient } from '../../api-client';
+import { ApiHttpClient } from '../../../api-client';
 
 @Component({
-  selector: 'app-expense',
-  templateUrl: './expense.component.html',
-  styleUrl: './expense.component.css'
+  selector: 'app-expe-index',
+  templateUrl: './expe-index.component.html',
+  styleUrl: './expe-index.component.css'
 })
-export class ExpenseComponent {
-
+export class ExpeIndexComponent {
   expenses: any[] = [];
 
   private http: ApiHttpClient;
@@ -28,5 +27,4 @@ export class ExpenseComponent {
       }
     )
   }
-
 }

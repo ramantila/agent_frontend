@@ -8,12 +8,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DebtComponent } from './pages/debt/debt.component';
-import { ExpenseComponent } from './pages/expense/expense.component';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './pages/sales/index/index.component';
 import { CreateComponent } from './pages/sales/create/create.component';
 import { ComIndexComponent } from './pages/commission/com-index/com-index.component';
 import { ComCreateComponent } from './pages/commission/com-create/com-create.component';
+import { ExpeIndexComponent } from './pages/expense/expe-index/expe-index.component';
+import { ExpeCreateComponent } from './pages/expense/expe-create/expe-create.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { ComCreateComponent } from './pages/commission/com-create/com-create.com
     HeaderComponent,
     SidebarComponent,
     DebtComponent,
-    ExpenseComponent,
     IndexComponent,
     CreateComponent,
     ComIndexComponent,
-    ComCreateComponent
+    ComCreateComponent,
+    ExpeIndexComponent,
+    ExpeCreateComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
