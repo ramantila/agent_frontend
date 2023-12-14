@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ApiHttpClient } from '../../api-client';
+import { ApiHttpClient } from '../../../api-client';
 
 @Component({
-  selector: 'app-sale',
-  templateUrl: './sale.component.html',
-  styleUrl: './sale.component.css'
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styleUrl: './index.component.css'
 })
-export class SaleComponent {
-
+export class IndexComponent {
   sales: any[] = [];
 
   private http: ApiHttpClient;
@@ -28,5 +27,4 @@ export class SaleComponent {
       }
     )
   }
-
 }

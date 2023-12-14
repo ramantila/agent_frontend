@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommissionComponent } from './pages/commission/commission.component';
 import { DebtComponent } from './pages/debt/debt.component';
 import { ExpenseComponent } from './pages/expense/expense.component';
-import { SaleComponent } from './pages/sale/sale.component';
+import { IndexComponent } from './pages/sales/index/index.component';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'sales',
     children: [
-      { path: 'view', component: SaleComponent }
+      { path: 'view', component: IndexComponent }
     ]
   },
   {

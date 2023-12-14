@@ -8,10 +8,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CommissionComponent } from './pages/commission/commission.component';
-import { SaleComponent } from './pages/sale/sale.component';
 import { DebtComponent } from './pages/debt/debt.component';
 import { ExpenseComponent } from './pages/expense/expense.component';
 import { FormsModule } from '@angular/forms';
+import { IndexComponent } from './pages/sales/index/index.component';
+import { CreateComponent } from './pages/sales/create/create.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,10 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     SidebarComponent,
     CommissionComponent,
-    SaleComponent,
     DebtComponent,
-    ExpenseComponent
+    ExpenseComponent,
+    IndexComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
