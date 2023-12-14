@@ -1,0 +1,166 @@
+<div class="container-fluid">
+    <div class="page-header">
+      <div class="row align-items-end">
+        <div class="col-lg-8">
+          <div class="page-header-title">
+            <i class="ik ik-dollar-sign bg-blue"></i>
+            <div class="d-inline">
+              <h5>Commissions</h5>
+              <span>List of commissions</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <nav class="breadcrumb-container" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#"><i class="ik ik-home"></i></a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="#">Commissions</a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- start message area-->
+      <div class="col-md-12"></div>
+      <!-- end message area-->
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header row">
+            <div class="col col-sm-2">
+              <a
+                href="http://127.0.0.1:8000/commissions/create"
+                class="btn btn-sm btn-primary btn-rounded"
+                >Create Commissions
+              </a>
+            </div>
+            <div class="col col-sm-1">
+              <div class="card-options d-inline-block"></div>
+            </div>
+            <div class="col col-sm-6"></div>
+            <div class="col col-sm-3"></div>
+          </div>
+          <div class="card-body">
+            <div class="dt-responsive">
+              <table id="data_table" class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>M-Pesa</th>
+                    <th>AirtelMoney</th>
+                    <th>Tigopesa</th>
+                    <th>Halopesa</th>
+                    <th>NMB</th>
+                    <th>CRDB</th>
+                    <th>NBC</th>
+                    <!-- <th>Total</th> -->
+
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let key of commissions">
+                    <td>{{ key.id }}</td>
+                    <td>05/07/2023</td>
+                    <td>{{ key.mpesa }}</td>
+                    <td>{{ key.airtelmoney }}</td>
+                    <td>{{ key.tigopesa }}</td>
+                    <td>{{ key.halopesa }}</td>
+                    <td>{{ key.nmb }}</td>
+                    <td>{{ key.crdb }}</td>
+                    <td>{{ key.nbc }}</td>
+                    <!-- <td>{{ key.id }}</td> -->
+
+                    <td>
+                      <div class="dropdown d-inline-block">
+                        <a
+                          class="nav-link dropdown-toggle"
+                          href="#"
+                          id="moreDropdown"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <i class="ik ik-more-vertical"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a
+                            class="dropdown-item"
+                            href="http://127.0.0.1:8000/commissions/1/edit"
+                            ><i class="ik ik-edit"></i> Edit
+                          </a>
+                          <a
+                            class="dropdown-item"
+                            href="#accountEdit"
+                            data-toggle="modal"
+                            data-target="#delete1"
+                          >
+                            <i class="ik ik-trash"></i> Delete
+                          </a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="delete1"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterLabel">Delete</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form
+            action="http://127.0.0.1:8000/commissions/1/delete"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="_token"
+              value="PBNAxhtXQzHknOif8GfsIm9DuTbw4y0SDcT0MZm4"
+            />
+            <div class="modal-body">
+              <span>Are you sure, You want to Delete this ?</span>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                No
+              </button>
+              <button type="submit" class="btn btn-danger">Yes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

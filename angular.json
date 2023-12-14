@@ -1,0 +1,122 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "agent-backend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/agent-backend",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css", 
+              "node_modules/wakala/all.css",
+              "node_modules/wakala/dist/css/theme.css",
+              "node_modules/wakala/plugins/fontawesome-free/css/all.min.css",
+              "node_modules/wakala/plugins/icon-kit/dist/css/iconkit.min.css",
+              "node_modules/wakala/plugins/ionicons/dist/css/ionicons.min.css",
+              "node_modules/wakala/plugins/DataTables/datatables.min.css",
+              "node_modules/wakala/dist/css/theme.min.css",
+              "node_modules/wakala/css/style.css"
+            ],
+            "scripts": [
+              "node_modules/wakala/src/js/vendor/jquery-3.3.1.min.js",
+              "node_modules/wakala/all.js",
+              "node_modules/wakala/plugins/popper.js/dist/umd/popper.min.js",
+              "node_modules/wakala/plugins/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wakala/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js",
+              "node_modules/wakala/plugins/screenfull/dist/screenfull.js",
+              "node_modules/wakala/plugins/DataTables/datatables.min.js",
+              "node_modules/wakala/src/js/vendor/modernizr-2.8.3.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "agent-backend:build:production"
+            },
+            "development": {
+              "buildTarget": "agent-backend:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "agent-backend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
