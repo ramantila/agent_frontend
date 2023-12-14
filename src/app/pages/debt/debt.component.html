@@ -32,8 +32,12 @@
       <div class="card">
         <div class="card-header row">
           <div class="col col-sm-2">
-            <button type="button" class="btn btn-sm btn-primary btn-rounded" data-toggle="modal"
-              data-target="#exampleModalCenter">
+            <button
+              type="button"
+              class="btn btn-sm btn-primary btn-rounded"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
               Create Debt
             </button>
           </div>
@@ -69,7 +73,9 @@
                   <td class="text-center">{{ key.repayment }}</td>
                   <td class="text-center">{{ key.amount - key.repayment }}</td>
                   <td class="text-center">
-                    <ng-container *ngIf="key.amount - key.repayment !== 0; else paid">
+                    <ng-container
+                      *ngIf="key.amount - key.repayment !== 0; else paid"
+                    >
                       <label class="badge badge-danger">Unpaid</label>
                     </ng-container>
                     <ng-template #paid>
@@ -79,21 +85,41 @@
 
                   <td class="text-center">
                     <div class="dropdown d-inline-block">
-                      <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="moreDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
                         <i class="ik ik-more-vertical"></i>
                       </a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#accountEdit" data-toggle="modal"
-                          [attr.data-target]="'#setedit' + key.id">
+                        <a
+                          class="dropdown-item"
+                          href="#accountEdit"
+                          data-toggle="modal"
+                          [attr.data-target]="'#setedit' + key.id"
+                        >
                           <i class="ik ik-edit"></i> Edit
                         </a>
 
-                        <a class="dropdown-item" href="#accountEdit" data-toggle="modal"
-                          [attr.data-target]="'#repayment' + key.id">
+                        <a
+                          class="dropdown-item"
+                          href="#accountEdit"
+                          data-toggle="modal"
+                          [attr.data-target]="'#repayment' + key.id"
+                        >
                           <i class="ik ik-edit"></i> Re-Payment
                         </a>
-                        <a class="dropdown-item" href="#accountEdit" data-toggle="modal" data-target="#delete2">
+                        <a
+                          class="dropdown-item"
+                          href="#accountEdit"
+                          data-toggle="modal"
+                          data-target="#delete2"
+                        >
                           <i class="ik ik-trash"></i> Delete
                         </a>
                       </div>
@@ -110,35 +136,67 @@
 
   <!-- ======================================== Add Debt ==================================================  -->
 
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterLabel">Create Debt</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <form #debtForm="ngForm" (ngSubmit)="onSubmit(debtForm)">
           <div class="modal-body">
             <div class="form-group">
-              <label for="title">Full Name<span class="text-red">*</span></label>
-              <input id="title" type="text" class="form-control" ngModel name="fullname" placeholder="Full Name"
-                required="" />
+              <label for="title"
+                >Full Name<span class="text-red">*</span></label
+              >
+              <input
+                id="title"
+                type="text"
+                class="form-control"
+                ngModel
+                name="fullname"
+                placeholder="Full Name"
+                required=""
+              />
               <div class="help-block with-errors"></div>
             </div>
 
             <div class="form-group">
               <label for="title">Amount<span class="text-red">*</span></label>
-              <input id="title" type="number" class="form-control" ngModel name="amount" placeholder="Amount"
-                required="" />
+              <input
+                id="title"
+                type="number"
+                class="form-control"
+                ngModel
+                name="amount"
+                placeholder="Amount"
+                required=""
+              />
               <div class="help-block with-errors"></div>
             </div>
 
             <div class="form-group">
               <label for="">Select Debt Type </label>
-              <select class="form-control select2" ngModel name="type" required="">
+              <select
+                class="form-control select2"
+                ngModel
+                name="type"
+                required=""
+              >
                 <option value="">Select Debt Type</option>
                 <option value="cash">Cash</option>
                 <option value="float">Float</option>
@@ -147,7 +205,11 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
               Close
             </button>
             <button type="submit" class="btn btn-primary">Save</button>
@@ -159,34 +221,70 @@
 
   <!-- ============================= Re-Payment ============================================  -->
 
-  <div *ngFor="let key of debts" class="modal fade" [id]="'repayment' + key.id" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+  <div
+    *ngFor="let key of debts"
+    class="modal fade"
+    [id]="'repayment' + key.id"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterLabel">Repayment</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form #debtRepaymentForm="ngForm" (ngSubmit)="onRepayment(key.id, debtRepaymentForm)">
+        <form
+          #debtRepaymentForm="ngForm"
+          (ngSubmit)="onRepayment(key.id, debtRepaymentForm)"
+        >
           <div class="modal-body">
             <div class="form-group">
-              <label for="title">Full Name<span class="text-red">*</span></label>
-              <input id="title" type="text" class="form-control" [(ngModel)]="key.fullname" name="fullname"
-                placeholder="Full Name" required="" />
+              <label for="title"
+                >Full Name<span class="text-red">*</span></label
+              >
+              <input
+                id="title"
+                type="text"
+                class="form-control"
+                [(ngModel)]="key.fullname"
+                name="fullname"
+                placeholder="Full Name"
+                required=""
+              />
               <div class="help-block with-errors"></div>
             </div>
 
             <div class="form-group">
               <label for="title">Amount<span class="text-red">*</span></label>
-              <input id="title" type="number" class="form-control" ngModel name="repayment" value=""
-                placeholder="Amount" required="" />
+              <input
+                id="title"
+                type="number"
+                class="form-control"
+                ngModel
+                name="repayment"
+                value=""
+                placeholder="Amount"
+                required=""
+              />
               <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
               Close
             </button>
             <button type="submit" class="btn btn-primary">Repayment</button>
@@ -198,37 +296,74 @@
 
   <!-- ======================================= Edit Debt ============================================= -->
 
-  <div *ngFor="let key of debts" class="modal fade" [id]="'setedit' + key.id" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+  <div
+    *ngFor="let key of debts"
+    class="modal fade"
+    [id]="'setedit' + key.id"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterLabel">Edit Debt</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form #debtUpdateForm="ngForm" (ngSubmit)="onUpdate(key.id, debtUpdateForm)">
+        <form
+          #debtUpdateForm="ngForm"
+          (ngSubmit)="onUpdate(key.id, debtUpdateForm)"
+        >
           <div class="modal-body">
             <input type="hidden" name="id" value="{{ key.id }}" ngModel />
 
             <div class="form-group">
-              <label for="title">Full Name<span class="text-red">*</span></label>
-              <input id="title" type="text" class="form-control" [(ngModel)]="key.fullname" name="fullname"
-                placeholder="Full Name" required />
+              <label for="title"
+                >Full Name<span class="text-red">*</span></label
+              >
+              <input
+                id="title"
+                type="text"
+                class="form-control"
+                [(ngModel)]="key.fullname"
+                name="fullname"
+                placeholder="Full Name"
+                required
+              />
               <div class="help-block with-errors"></div>
             </div>
 
             <div class="form-group">
               <label for="amount">Amount<span class="text-red">*</span></label>
-              <input id="amount" type="number" class="form-control" [(ngModel)]="key.amount" name="amount"
-                placeholder="Amount" required />
+              <input
+                id="amount"
+                type="number"
+                class="form-control"
+                [(ngModel)]="key.amount"
+                name="amount"
+                placeholder="Amount"
+                required
+              />
               <div class="help-block with-errors"></div>
             </div>
 
             <div class="form-group">
               <label for="type">Select Debt Type</label>
-              <select class="form-control select2" [value]="key.type" [(ngModel)]="key.type" name="type" required>
+              <select
+                class="form-control select2"
+                [value]="key.type"
+                [(ngModel)]="key.type"
+                name="type"
+                required
+              >
                 <option value="">Select Debt Type</option>
                 <option [selected]="key.type === 'cash'" value="cash">
                   Cash
@@ -236,14 +371,21 @@
                 <option [selected]="key.type === 'float'" value="float">
                   Float
                 </option>
-                <option [selected]="key.type === 'control number'" value="control number">
+                <option
+                  [selected]="key.type === 'control number'"
+                  value="control number"
+                >
                   Control Number
                 </option>
               </select>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
               Close
             </button>
             <button type="submit" class="btn btn-primary">Save</button>

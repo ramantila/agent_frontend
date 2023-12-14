@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { CommissionComponent } from './pages/commission/commission.component';
 import { DebtComponent } from './pages/debt/debt.component';
 import { ExpenseComponent } from './pages/expense/expense.component';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './pages/sales/index/index.component';
 import { CreateComponent } from './pages/sales/create/create.component';
+import { ComIndexComponent } from './pages/commission/com-index/com-index.component';
+import { ComCreateComponent } from './pages/commission/com-create/com-create.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,12 @@ import { CreateComponent } from './pages/sales/create/create.component';
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
-    CommissionComponent,
     DebtComponent,
     ExpenseComponent,
     IndexComponent,
-    CreateComponent
+    CreateComponent,
+    ComIndexComponent,
+    ComCreateComponent
   ],
   imports: [
     BrowserModule,

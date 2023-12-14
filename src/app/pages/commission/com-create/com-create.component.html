@@ -3,10 +3,10 @@
     <div class="row align-items-end">
       <div class="col-lg-8">
         <div class="page-header-title">
-          <i class="ik ik-shopping-cart bg-blue"></i>
+          <i class="ik ik-dollar-sign bg-blue"></i>
           <div class="d-inline">
-            <h5>Sale</h5>
-            <span>Create sale</span>
+            <h5>Commission</h5>
+            <span>Create commission</span>
           </div>
         </div>
       </div>
@@ -17,7 +17,7 @@
               <a href="#"><i class="ik ik-home"></i></a>
             </li>
             <li class="breadcrumb-item">
-              <a href="#">Sale</a>
+              <a href="#">Commission</a>
             </li>
           </ol>
         </nav>
@@ -31,57 +31,22 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h3>Create Sale</h3>
+          <h3>Create Commission</h3>
           <div class="card-header-right"></div>
         </div>
         <div class="card-body">
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-              <form #saleForm="ngForm" (ngSubmit)="onSubmit(saleForm)">
+              <form
+                action="http://127.0.0.1:8001/commissions/store"
+                method="POST"
+              >
                 <input
                   type="hidden"
                   name="_token"
-                  value="WmsKlaKP0LaoJBK3VdoYPN5umPwMXGzxnWDNQr7k"
+                  value="yHerFE96940twBf7e4JScgRUVgXy1VLFEJiVbzRd"
                 />
-                <div class="row">
-                  <div class="col-md-6 mr-">
-                    <div class="form-group">
-                      <label for="title"
-                        >Cash in hand<span class="text-red">*</span></label
-                      >
-                      <input
-                        id="title"
-                        ngModel
-                        type="number"
-                        class="form-control"
-                        name="cash"
-                        placeholder="Cash in hand"
-                        required=""
-                      />
-                      <div class="help-block with-errors"></div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="title"
-                        >Debts<span class="text-red">*</span></label
-                      >
-                      <input
-                        id="title"
-                        ngModel
-                        type="number"
-                        class="form-control"
-                        name="debts"
-                        placeholder="Debts"
-                        required=""
-                      />
-                      <div class="help-block with-errors"></div>
-                    </div>
-                  </div>
-                </div>
-
                 <div class="row">
                   <div class="col-md-6 mr-">
                     <div class="form-group">
@@ -90,7 +55,6 @@
                       >
                       <input
                         id="title"
-                        ngModel
                         type="number"
                         class="form-control"
                         name="mpesa"
@@ -108,7 +72,6 @@
                       >
                       <input
                         id="title"
-                        ngModel
                         type="number"
                         class="form-control"
                         name="airtelmoney"
@@ -128,7 +91,6 @@
                       >
                       <input
                         id="title"
-                        ngModel
                         type="number"
                         class="form-control"
                         name="tigopesa"
@@ -146,7 +108,6 @@
                       >
                       <input
                         id="title"
-                        ngModel
                         type="number"
                         class="form-control"
                         name="halopesa"
@@ -166,7 +127,6 @@
                       >
                       <input
                         id="title"
-                        ngModel
                         type="number"
                         class="form-control"
                         name="nmb"
@@ -184,7 +144,6 @@
                       >
                       <input
                         id="title"
-                        ngModel
                         type="number"
                         class="form-control"
                         name="crdb"
@@ -204,7 +163,6 @@
                       >
                       <input
                         id="title"
-                        ngModel
                         type="number"
                         class="form-control"
                         name="nbc"

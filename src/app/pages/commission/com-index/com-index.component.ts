@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ApiHttpClient } from '../../api-client';
-import { ApiResponse } from '../../api-reponse';
+import { ApiHttpClient } from '../../../api-client';
 
 @Component({
-  selector: 'app-commission',
-  templateUrl: './commission.component.html',
-  styleUrl: './commission.component.css'
+  selector: 'app-com-index',
+  templateUrl: './com-index.component.html',
+  styleUrl: './com-index.component.css'
 })
-export class CommissionComponent {
-
+export class ComIndexComponent {
   commissions: any[] = [];
   private http: ApiHttpClient;
 
@@ -29,5 +27,4 @@ export class CommissionComponent {
       }
     );
   }
-
 }
