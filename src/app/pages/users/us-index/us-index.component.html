@@ -1,0 +1,241 @@
+<div class="container-fluid">
+  <div class="page-header">
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="page-header-title">
+          <i class="ik ik-dollar-sign bg-blue"></i>
+          <div class="d-inline">
+            <h5>Users</h5>
+            <span>List of users</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <nav class="breadcrumb-container" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#"><i class="ik ik-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#">Users</a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- start message area-->
+    <div class="col-md-12"></div>
+    <!-- end message area-->
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header row">
+          <div class="col col-sm-2">
+            <button
+              type="button"
+              class="btn btn-sm btn-primary btn-rounded"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
+              Create User
+            </button>
+          </div>
+          <div class="col col-sm-1">
+            <div class="card-options d-inline-block"></div>
+          </div>
+          <div class="col col-sm-6"></div>
+          <div class="col col-sm-3"></div>
+        </div>
+        <div class="card-body">
+          <div class="dt-responsive">
+            <table id="data_table" class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let key of users">
+                  <td>{{ key.id }}</td>
+                  <td>{{ key.firstName }} {{ key.lastName }}</td>
+                  <td>05/07/2023</td>
+                  <td class="text-center">
+                    <div class="dropdown d-inline-block">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="moreDropdown"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i class="ik ik-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a
+                          class="dropdown-item"
+                          href="#accountEdit"
+                          data-toggle="modal"
+                          [attr.data-target]="'#setedit' + key.id"
+                        >
+                          <i class="ik ik-edit"></i> Edit
+                        </a>
+
+                        <a
+                          class="dropdown-item"
+                          href="#accountEdit"
+                          data-toggle="modal"
+                          [attr.data-target]="'#repayment' + key.id"
+                        >
+                          <i class="ik ik-edit"></i> Re-Payment
+                        </a>
+                        <a
+                          class="dropdown-item"
+                          href="#accountEdit"
+                          data-toggle="modal"
+                          data-target="#delete2"
+                        >
+                          <i class="ik ik-trash"></i> Delete
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================== Add User ==================================================  -->
+
+<div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterLabel">Create User</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+        <input
+          type="hidden"
+          name="_token"
+          value="Epe4WmEgV89Vo8Y8v3BN0RHXTEp7fx3jvIqI5p17"
+        />
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="title">First Name<span class="text-red">*</span></label>
+            <input
+              id="title"
+              ngModel
+              type="text"
+              class="form-control"
+              name="firstName"
+              value=""
+              placeholder="Full Name"
+              required=""
+            />
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Last Name<span class="text-red">*</span></label>
+            <input
+              id="title"
+              ng ngModel
+              type="text"
+              class="form-control"
+              name="lastName"
+              value=""
+              placeholder="Last Name"
+              required=""
+            />
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Username<span class="text-red">*</span></label>
+            <input
+              id="title"
+              ngModel
+              type="text"
+              class="form-control"
+              name="login"
+              value=""
+              placeholder="Username"
+              required=""
+            />
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Password<span class="text-red">*</span></label>
+            <input
+              id="title"
+              ngModel
+              type="password"
+              class="form-control"
+              name="password"
+              value=""
+              placeholder="Password"
+              required=""
+            />
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="title"
+              >Re-Password<span class="text-red">*</span></label
+            >
+            <input
+              id="title"
+              type="password"
+              class="form-control"
+              name="repassword"
+              value=""
+              placeholder="Re-Password"
+              required=""
+            />
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="">Select Role<span class="text-red">*</span></label>
+            <select class="form-control select2" name="role" required="">
+              <option value="cheese">Select Role</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

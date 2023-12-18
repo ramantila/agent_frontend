@@ -1,16 +1,23 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
-// @Injectable({
-//     providedIn: 'root'
-// })
+@Injectable({
+    providedIn: 'root'
+})
 
 export class ApiHttpClient{
     
     constructor(private http: HttpClient){}
 
-    get(url: string){
-        return this.http.get("http://localhost:8080/api/v1/" + url);
+    get(url: string, token: string): Observable<any>{
+
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      return this.http.get("http://localhost:8080/api/v1/" + url, { headers });
+
     }
 
     post(url: string, data: any): any{

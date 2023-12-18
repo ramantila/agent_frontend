@@ -17,7 +17,11 @@ export class ExpeIndexComponent {
   }
 
   ngOnInit(): void{
-    this.http.get("expenses").subscribe(
+
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJTaGFiYmlyIiwibGFzdE5hbWUiOiJEYXdvb2RpIiwiaXNzIjpudWxsLCJleHAiOjE3MDI4OTM4NjAsImlhdCI6MTcwMjg5MzUwMH0.qut9ARs7D7fcH0fSFNpTfFNUsj0KzlbWd1IKd-sxDMo";
+
+
+    this.http.get("expenses",token).subscribe(
       (data: any) =>{
         this.expenses = data;
         console.log(this.expenses);

@@ -20,7 +20,10 @@ export class DashboardComponent {
   }
 
   ngOnInit(): void{
-    this.http.get("debts").subscribe(
+
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJTaGFiYmlyIiwibGFzdE5hbWUiOiJEYXdvb2RpIiwiaXNzIjpudWxsLCJleHAiOjE3MDI4OTM4NjAsImlhdCI6MTcwMjg5MzUwMH0.qut9ARs7D7fcH0fSFNpTfFNUsj0KzlbWd1IKd-sxDMo";
+
+    this.http.get("total-debts", token).subscribe(
       (data: any) =>{
         this.debts = data;
         this.calculateTotalDebt(); 
@@ -31,7 +34,7 @@ export class DashboardComponent {
       }
     )
 
-    this.http.get('commissions').subscribe(
+    this.http.get('total-commissions', token).subscribe(
       (data: any) => { 
         this.commissions = data;
         console.log(this.commissions);

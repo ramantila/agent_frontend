@@ -16,6 +16,9 @@ import { ComCreateComponent } from './pages/commission/com-create/com-create.com
 import { ExpeIndexComponent } from './pages/expense/expe-index/expe-index.component';
 import { ExpeCreateComponent } from './pages/expense/expe-create/expe-create.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsIndexComponent } from './pages/users/us-index/us-index.component';
+import { ContainerComponent } from './container/container.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ComCreateComponent,
     ExpeIndexComponent,
     ExpeCreateComponent,
-    DashboardComponent
+    DashboardComponent,
+    UsIndexComponent,
+    LoginComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,

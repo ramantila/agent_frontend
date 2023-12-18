@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgForm} from '@angular/forms';
 import { ApiHttpClient } from '../../api-client';
@@ -74,7 +74,10 @@ export class DebtComponent {
   }
 
   ngOnInit(): void{
-    this.http.get("debts").subscribe(
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJTaGFiYmlyIiwibGFzdE5hbWUiOiJEYXdvb2RpIiwiaXNzIjpudWxsLCJleHAiOjE3MDI4OTM4NjAsImlhdCI6MTcwMjg5MzUwMH0.qut9ARs7D7fcH0fSFNpTfFNUsj0KzlbWd1IKd-sxDMo";
+
+
+    this.http.get("debts",token).subscribe(
       (data: any) =>{
         this.debts = data;
         console.log(this.debts);

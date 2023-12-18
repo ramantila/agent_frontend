@@ -1,0 +1,70 @@
+<div class="auth-wrapper">
+  <div class="container" style="padding-top: 10%">
+    <div class="container-fluid h-100">
+      <div class="row flex-row h-100">
+        <div class="col-xl-4 col-lg-4 col-md-4 m-auto">
+          <div class="authentication-form mx-auto">
+            <div class="logo-centered">
+              <img height="150" src="assets/img/logo.jpeg" alt="RADMIN" />
+            </div>
+            <p>Welcome back!</p>
+            <form action="http://127.0.0.1:8001/postLogin" method="POST">
+              <input
+                type="hidden"
+                name="_token"
+                value="2rPRw3ybOv0JtPzxB7j9zQ9laRMGAERZgUtmMZBA"
+              />
+              <div class="form-group">
+                <input
+                  id="email"
+                  type="text"
+                  placeholder="Username"
+                  class="form-control"
+                  name="username"
+                  value=""
+                  required
+                  autocomplete="email"
+                  autofocus
+                />
+                <i class="ik ik-user"></i>
+              </div>
+              <div class="form-group">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  class="form-control"
+                  name="password"
+                  value=""
+                  required
+                />
+                <i class="ik ik-lock"></i>
+              </div>
+              <div class="row">
+                <div class="col text-left">
+                  <label class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="item_checkbox"
+                      name="item_checkbox"
+                      value="option1"
+                    />
+                    <span class="custom-control-label">&nbsp;Remember Me</span>
+                  </label>
+                </div>
+                <div class="col text-right">
+                  <a class="btn text-danger" href="#"> Forgot Password? </a>
+                </div>
+              </div>
+              <div class="sign-btn text-center">
+                <a class="btn text-danger" routerLink="dashboard"> Sign in </a>
+                <!-- <button type="submit" class="btn btn-custom">Sign In</button> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

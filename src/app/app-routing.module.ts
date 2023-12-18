@@ -8,6 +8,7 @@ import { ExpeCreateComponent } from './pages/expense/expe-create/expe-create.com
 import { ExpeIndexComponent } from './pages/expense/expe-index/expe-index.component';
 import { CreateComponent } from './pages/sales/create/create.component';
 import { IndexComponent } from './pages/sales/index/index.component';
+import { UsIndexComponent } from './pages/users/us-index/us-index.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,12 @@ const routes: Routes = [
     children: [
       { path: 'view', component: ExpeIndexComponent },
       { path: 'create', component: ExpeCreateComponent }
+    ]
+  },
+  {
+    path: 'users',
+    children: [
+      { path: 'view', component: UsIndexComponent }
     ]
   }
 ];
