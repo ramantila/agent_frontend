@@ -20,11 +20,17 @@ export class ApiHttpClient{
 
     }
 
-    post(url: string, data: any): any{
-        return this.http.post(
-          "http://localhost:8080/api/v1/" + url,
-          data
-        );
+    post(url: string, data: any, token: string): any{
+
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      return this.http.post(
+        "http://localhost:8080/api/v1/" + url,
+        data,
+        { headers: headers }
+      );
     }
 
     loginPost(url: string, data: any): any{

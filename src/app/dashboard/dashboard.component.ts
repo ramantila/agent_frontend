@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiHttpClient } from '../api-client';
+import { AuthtokenService } from '../authtoken.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,13 +17,17 @@ export class DashboardComponent {
 
   private http: ApiHttpClient;
 
-  constructor(private httpclient: HttpClient, private router: Router){
+  constructor(private httpclient: HttpClient, 
+    private router: Router,
+    private authService: AuthtokenService
+  )
+  {
     this.http = new ApiHttpClient(httpclient);
   }
 
   ngOnInit(): void{
 
-    const token = window.localStorage.getItem('auth_token');
+    const token = this.authService.getToken();
 
     if(token)
     {
@@ -33,6 +38,11 @@ export class DashboardComponent {
           console.log(this.debts);
         },
         error => {
+          if(error.status === 403)
+          {
+            this.authService.logout();
+            this.router.navigate(['']);
+          }
           console.error('Error fetching commissions:', error);
         }
       )
@@ -43,13 +53,19 @@ export class DashboardComponent {
           console.log(this.commissions);
         },
         error => {
+          if(error.status === 403)
+          {
+            this.authService.logout();
+            this.router.navigate(['']);
+          }
           console.error('Error fetching commissions:', error);
         }
       );
     }
     else
     {
-      this.router.navigate(['/login']);
+      this.authService.logout();
+      this.router.navigate(['']);
     }
   }
 

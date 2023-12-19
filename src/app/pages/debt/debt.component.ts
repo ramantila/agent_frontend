@@ -27,20 +27,30 @@ export class DebtComponent {
   }
 
   onSubmit(debtForm: NgForm): void{
-    this.http.post(
-      "add/debt",
-      debtForm.value,
-    ).subscribe(
-      (data: any) => {
-        this.debt = data;
-        console.log(this.debt);
-        // this.location.go(this.location.path());
-        location.reload();
-      },
-      (error: any) => { 
-        console.error('Error fetching debts:', error);
-      }
-    );
+
+    const token = this.authService.getToken();
+    if(token){
+      this.http.post("add/debt", debtForm.value, token).subscribe(
+        (data: any) => {
+          this.debt = data;
+          console.log(this.debt);
+          // this.location.go(this.location.path());
+          location.reload();
+        },
+        (error: any) => { 
+          if(error.status === 403){
+            this.authService.logout();
+            this.router.navigate(['']);
+          }
+          console.error('Error fetching debts:', error);
+        }
+      );
+    }
+    else{
+      this.authService.logout();
+      this.router.navigate(['']);
+    }
+ 
   }
 
   onUpdate(id: string, debtUpdateForm: NgForm): void {
@@ -81,7 +91,7 @@ export class DebtComponent {
 
   ngOnInit(): void{
 
-    const token = window.localStorage.getItem('auth_token');
+    const token = this.authService.getToken();
 
     if(token)
     {
