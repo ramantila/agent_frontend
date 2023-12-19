@@ -27,6 +27,13 @@ export class ApiHttpClient{
         );
     }
 
+    loginPost(url: string, data: any): any{
+      return this.http.post(
+        "http://localhost:8080/" + url,
+        data
+      );
+    }
+
     commonUpdate(url: string, id: string, data: any): any {
         return this.http.post(
           `http://localhost:8080/api/v1/${url}/${id}`,

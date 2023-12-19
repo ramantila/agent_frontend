@@ -8,19 +8,15 @@
               <img height="150" src="assets/img/logo.jpeg" alt="RADMIN" />
             </div>
             <p>Welcome back!</p>
-            <form action="http://127.0.0.1:8001/postLogin" method="POST">
-              <input
-                type="hidden"
-                name="_token"
-                value="2rPRw3ybOv0JtPzxB7j9zQ9laRMGAERZgUtmMZBA"
-              />
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
               <div class="form-group">
                 <input
+                ngModel
                   id="email"
                   type="text"
                   placeholder="Username"
                   class="form-control"
-                  name="username"
+                  name="login"
                   value=""
                   required
                   autocomplete="email"
@@ -30,6 +26,7 @@
               </div>
               <div class="form-group">
                 <input
+                ngModel
                   id="password"
                   type="password"
                   placeholder="Password"
@@ -58,8 +55,7 @@
                 </div>
               </div>
               <div class="sign-btn text-center">
-                <a class="btn text-danger" routerLink="dashboard"> Sign in </a>
-                <!-- <button type="submit" class="btn btn-custom">Sign In</button> -->
+                <button type="submit" class="btn btn-custom">Sign In</button>
               </div>
             </form>
           </div>

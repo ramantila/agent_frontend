@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiHttpClient } from '../api-client';
 
 @Component({
@@ -15,35 +16,41 @@ export class DashboardComponent {
 
   private http: ApiHttpClient;
 
-  constructor(private httpclient: HttpClient){
+  constructor(private httpclient: HttpClient, private router: Router){
     this.http = new ApiHttpClient(httpclient);
   }
 
   ngOnInit(): void{
 
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJTaGFiYmlyIiwibGFzdE5hbWUiOiJEYXdvb2RpIiwiaXNzIjpudWxsLCJleHAiOjE3MDI4OTM4NjAsImlhdCI6MTcwMjg5MzUwMH0.qut9ARs7D7fcH0fSFNpTfFNUsj0KzlbWd1IKd-sxDMo";
+    const token = window.localStorage.getItem('auth_token');
 
-    this.http.get("total-debts", token).subscribe(
-      (data: any) =>{
-        this.debts = data;
-        this.calculateTotalDebt(); 
-        console.log(this.debts);
-      },
-      error => {
-        console.error('Error fetching commissions:', error);
-      }
-    )
+    if(token)
+    {
+      this.http.get("total-debts", token).subscribe(
+        (data: any) =>{
+          this.debts = data;
+          this.calculateTotalDebt(); 
+          console.log(this.debts);
+        },
+        error => {
+          console.error('Error fetching commissions:', error);
+        }
+      )
 
-    this.http.get('total-commissions', token).subscribe(
-      (data: any) => { 
-        this.commissions = data;
-        console.log(this.commissions);
-      },
-      error => {
-        console.error('Error fetching commissions:', error);
-      }
-    );
-
+      this.http.get('total-commissions', token).subscribe(
+        (data: any) => { 
+          this.commissions = data;
+          console.log(this.commissions);
+        },
+        error => {
+          console.error('Error fetching commissions:', error);
+        }
+      );
+    }
+    else
+    {
+      this.router.navigate(['/login']);
+    }
   }
 
   calculateTotalDebt(): void {

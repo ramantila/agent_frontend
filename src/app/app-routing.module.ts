@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ComCreateComponent } from './pages/commission/com-create/com-create.component';
 import { ComIndexComponent } from './pages/commission/com-index/com-index.component';
@@ -11,6 +12,9 @@ import { IndexComponent } from './pages/sales/index/index.component';
 import { UsIndexComponent } from './pages/users/us-index/us-index.component';
 
 const routes: Routes = [
+  {
+    path: '', component: LoginComponent 
+  },
   {
     path: 'dashboard', component: DashboardComponent 
   },

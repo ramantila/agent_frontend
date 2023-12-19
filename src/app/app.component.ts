@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthtokenService } from './authtoken.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'agent-backend';
+  
+  constructor(private authService: AuthtokenService) { }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
 }

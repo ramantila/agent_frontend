@@ -2,7 +2,9 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiHttpClient } from '../../api-client';
+import { AuthtokenService } from '../../authtoken.service';
 
 @Component({
   selector: 'app-debt',
@@ -16,7 +18,11 @@ export class DebtComponent {
 
   private http: ApiHttpClient;
 
-  constructor(private httpclient: HttpClient, private location: Location){
+  constructor(private httpclient: HttpClient, 
+    private location: Location, 
+    private router: Router,
+    private authService: AuthtokenService)
+  {
     this.http = new ApiHttpClient(httpclient);
   }
 
@@ -74,18 +80,34 @@ export class DebtComponent {
   }
 
   ngOnInit(): void{
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJTaGFiYmlyIiwibGFzdE5hbWUiOiJEYXdvb2RpIiwiaXNzIjpudWxsLCJleHAiOjE3MDI4OTM4NjAsImlhdCI6MTcwMjg5MzUwMH0.qut9ARs7D7fcH0fSFNpTfFNUsj0KzlbWd1IKd-sxDMo";
 
+    const token = window.localStorage.getItem('auth_token');
 
-    this.http.get("debts",token).subscribe(
-      (data: any) =>{
-        this.debts = data;
-        console.log(this.debts);
-      },
-      error => {
-        console.error('Error fetching commissions:', error);
-      }
-    )
+    if(token)
+    {
+
+      this.http.get("debts",token).subscribe(
+        (data: any) =>{
+          this.debts = data;
+          console.log(this.debts);
+          
+        },
+        error => {
+          if (error.status === 403) { 
+            this.authService.logout();
+            this.router.navigate([''])
+          }
+          console.error('Error fetching commissions:', error);
+        }
+      );
+
+    }
+    else
+    {
+      this.authService.logout();
+      this.router.navigate([''])
+    }
+    
   }
 
 }

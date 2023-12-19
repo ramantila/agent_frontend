@@ -1,2 +1,6 @@
-<app-container></app-container>
-<router-outlet></router-outlet>
+<ng-container *ngIf="isLoggedIn(); else showLogin">
+  <app-container></app-container>
+</ng-container>
+<ng-template #showLogin>
+  <app-login></app-login>
+</ng-template>
