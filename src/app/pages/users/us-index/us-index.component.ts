@@ -37,17 +37,13 @@ export class UsIndexComponent {
           location.reload();
         },
         (error: any) => { 
-          if(error.status === 403){
-            this.authService.logout();
-            this.router.navigate(['']);
-          }
+          this.handleError({status:403})
           console.error('Error fetching debts:', error);
         }
       );
     }
     else{
-      this.authService.logout();
-      this.router.navigate(['']);
+      this.handleElse();
     }
    
   }
@@ -62,18 +58,26 @@ export class UsIndexComponent {
           console.log(this.users);
         },
         error => {
-          if(error.status === 403){
-            this.authService.logout()
-            this.router.navigate([''])
-          }
+          this.handleError({status:403})
           console.error('Error fetching commissions:', error);
         }
       )
     }
     else{ 
-      this.authService.logout()
-      this.router.navigate([''])
+      this.handleElse();
     }
    
+  }
+
+  handleError(error: any): void {
+    if (error.status === 403) {
+      this.authService.logout();
+      this.router.navigate(['']);
+    }
+  }
+
+  handleElse(): void{
+    this.authService.logout();
+    this.router.navigate([''])
   }
 }

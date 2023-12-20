@@ -48,4 +48,16 @@ export class ComCreateComponent {
     }
    
   }
+
+  handleError(error: any): void {
+    if (error.status === 403) {
+      this.authService.logout();
+      this.router.navigate(['']);
+    }
+  }
+
+  handleElse(): void{
+    this.authService.logout();
+    this.router.navigate([''])
+  }
 }

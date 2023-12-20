@@ -34,19 +34,27 @@ export class CreateComponent {
           this.router.navigate(['/sales/view']);
         },
         (error: any) => {
-          if(error.status === 403){
-            this.authService.logout();
-            this.router.navigate(['']);
-          }
+          this.handleError({ status: 403})
           console.error('Error fetching debts:', error);
         }
       )
     }
     else{
+      this.handleElse()
+    }
+
+  }
+
+  handleError(error: any): void {
+    if (error.status === 403) {
       this.authService.logout();
       this.router.navigate(['']);
     }
+  }
 
+  handleElse(): void{
+    this.authService.logout();
+    this.router.navigate([''])
   }
 
 }
