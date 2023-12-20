@@ -40,11 +40,16 @@ export class ApiHttpClient{
       );
     }
 
-    commonUpdate(url: string, id: string, data: any): any {
-        return this.http.post(
-          `http://localhost:8080/api/v1/${url}/${id}`,
-          data
-        );
+    commonUpdate(url: string, id: string, data: any, token: string): any {
+
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      return this.http.post(
+        `http://localhost:8080/api/v1/${url}/${id}`,
+        data
+      );
     }
 }
 

@@ -26,6 +26,8 @@ export class DebtComponent {
     this.http = new ApiHttpClient(httpclient);
   }
 
+
+   // ============================= onSubmit ========================
   onSubmit(debtForm: NgForm): void{
 
     const token = this.authService.getToken();
@@ -38,57 +40,73 @@ export class DebtComponent {
           location.reload();
         },
         (error: any) => { 
-          if(error.status === 403){
-            this.authService.logout();
-            this.router.navigate(['']);
-          }
-          console.error('Error fetching debts:', error);
+          this.handleError({ status: 403})
+          console.error('Error submit debts:', error);
         }
       );
     }
     else{
-      this.authService.logout();
-      this.router.navigate(['']);
+      this.handleElse();
     }
  
   }
 
+  // ============================= onUpdate ========================
   onUpdate(id: string, debtUpdateForm: NgForm): void {
-    this.http.commonUpdate(
-      'debt',
-      id, 
-      debtUpdateForm.value
-    ).subscribe(
-      (data: any) => {
-        this.debt = data;
-        console.log(this.debt);
-        // this.location.go(this.location.path());
-        location.reload();
-      },
-      (error: any) => { 
-        console.error('Error fetching debts:', error);
-      }
-    )
+
+    const token = this.authService.getToken();
+
+    if(token){
+
+      this.http.commonUpdate('debt',id, debtUpdateForm.value, token).subscribe(
+        (data: any) => {
+          this.debt = data;
+          console.log(this.debt);
+          // this.location.go(this.location.path());
+          location.reload();
+        },
+        (error: any) => { 
+          this.handleError({ status: 403})
+          console.error('Error update debts:', error);
+        }
+      )
+
+    }
+    else{
+      this.handleElse();
+    }
+
   }
 
+
+  // ============================= onRepayment ========================
   onRepayment(id: string, debtRepaymentForm: NgForm): void {
-    this.http.commonUpdate(
-      'repayment',
-      id, 
-      debtRepaymentForm.value
-    ).subscribe(
-      (data: any) => {
-        this.debt = data;
-        console.log(this.debt);
-        // this.location.go(this.location.path());
-        location.reload();
-      },
-      (error: any) => { 
-        console.error('Error fetching debts:', error);
-      }
-    )
+
+    const token = this.authService.getToken();
+
+    if(token){
+
+      this.http.commonUpdate('repayment',id,debtRepaymentForm.value, token).subscribe(
+        (data: any) => {
+          this.debt = data;
+          console.log(this.debt);
+          // this.location.go(this.location.path());
+          location.reload();
+        },
+        (error: any) => { 
+          this.handleError({ status: 403})
+          console.error('Error repayment debts:', error);
+        }
+      )
+
+    }
+    else{
+      this.handleElse();
+    }
+
   }
 
+   // ============================= get records ========================
   ngOnInit(): void{
 
     const token = this.authService.getToken();
@@ -103,21 +121,29 @@ export class DebtComponent {
           
         },
         error => {
-          if (error.status === 403) { 
-            this.authService.logout();
-            this.router.navigate([''])
-          }
-          console.error('Error fetching commissions:', error);
+         this.handleError({ status: 403})
+         console.error('Error fetching debts:', error);
         }
       );
 
     }
     else
     {
-      this.authService.logout();
-      this.router.navigate([''])
+     this.handleElse();
     }
     
+  }
+
+  handleError(error: any): void {
+    if (error.status === 403) {
+      this.authService.logout();
+      this.router.navigate(['']);
+    }
+  }
+
+  handleElse(): void{
+    this.authService.logout();
+    this.router.navigate(['']);
   }
 
 }

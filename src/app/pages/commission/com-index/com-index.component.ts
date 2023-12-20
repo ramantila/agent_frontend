@@ -33,19 +33,28 @@ export class ComIndexComponent {
           console.log(this.commissions);
         },
         error => {
-          if (error.status === 403) {
-            this.authService.logout()
-            this.router.navigate([''])
-          }
-          console.error('Error fetching commissions:', error);
+          this.handleError({ status:403})
+          console.error('Error fetching commission:', error);
         }
       );
     }
     else
     {
-      this.authService.logout()
-      this.router.navigate([''])
+      this.handleElse();
     }
 
   }
+
+  handleError(error: any): void {
+    if (error.status === 403) {
+      this.authService.logout();
+      this.router.navigate(['']);
+    }
+  }
+
+  handleElse(): void{
+    this.authService.logout();
+    this.router.navigate(['']);
+  }
+
 }

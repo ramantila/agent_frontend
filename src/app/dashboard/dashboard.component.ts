@@ -29,44 +29,43 @@ export class DashboardComponent {
 
     const token = this.authService.getToken();
 
-    if(token)
-    {
+    if (token) {
       this.http.get("total-debts", token).subscribe(
-        (data: any) =>{
+        (data: any) => {
           this.debts = data;
-          this.calculateTotalDebt(); 
+          this.calculateTotalDebt();
           console.log(this.debts);
         },
-        error => {
-          if(error.status === 403)
-          {
-            this.authService.logout();
-            this.router.navigate(['']);
-          }
-          console.error('Error fetching commissions:', error);
+        (error: any) => { 
+          this.handleError({ status: 403})
+          console.error('Error repayment Dashboard:', error);
         }
-      )
-
+      );
+    
       this.http.get('total-commissions', token).subscribe(
-        (data: any) => { 
+        (data: any) => {
           this.commissions = data;
           console.log(this.commissions);
         },
-        error => {
-          if(error.status === 403)
-          {
-            this.authService.logout();
-            this.router.navigate(['']);
-          }
-          console.error('Error fetching commissions:', error);
+        (error: any) => { 
+          this.handleError({ status: 403})
+          console.error('Error repayment Dashboard:', error);
         }
       );
-    }
-    else
-    {
+    } 
+    else {
       this.authService.logout();
       this.router.navigate(['']);
     }
+   
+  }
+
+  handleError(error: any): void {
+    if (error.status === 403) {
+      this.authService.logout();
+      this.router.navigate(['']);
+    }
+    console.error('Error fetching Dashboard:', error);
   }
 
   calculateTotalDebt(): void {

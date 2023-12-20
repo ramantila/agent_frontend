@@ -22,6 +22,7 @@ export class IndexComponent {
     this.http = new ApiHttpClient(httpclient);
   }
 
+  // ============================= get sales ========================
   ngOnInit(): void{
     const token = this.authService.getToken()
 
@@ -33,19 +34,28 @@ export class IndexComponent {
           console.log(this.sales);
         },
         error => {
-          if (error.status === 403) { 
-            this.authService.logout();
-            this.router.navigate([''])
-          }
-          console.error('Error fetching commissions:', error);
+          this.handleError({ status:403})
+          console.error('Error fetching Sales:', error);
         }
       )
     }
     else
     {
-      this.authService.logout();
-      this.router.navigate([''])
+      this.handleElse()
     }
     
   }
+
+  handleError(error: any): void {
+    if (error.status === 403) {
+      this.authService.logout();
+      this.router.navigate(['']);
+    }
+  }
+
+  handleElse(): void{
+    this.authService.logout();
+    this.router.navigate([''])
+  }
+
 }
